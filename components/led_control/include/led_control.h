@@ -10,7 +10,7 @@
 #define GREEN_LED_PIN GPIO_NUM_12
 #define BLUE_LED_PIN GPIO_NUM_14
 
-// LED behavior and color enumerations
+// Enumerations for LED behavior and color
 typedef enum {
     LED_BEHAVIOR_OFF,
     LED_BEHAVIOR_ON,
@@ -30,22 +30,28 @@ typedef enum {
 extern volatile LedBehavior ledBehavior;
 extern volatile LedColor ledColor;
 
-// Function declarations
-void initializeLEDs();
+// Function prototypes
 void controlLEDs(void *pvParameters);
-void setBlinkInterval(int interval);
-void setFastBlinkInterval(int interval);
-void setSlowBlinkInterval(int interval);
-void setCycleInterval(int interval);
-void setRedLEDBrightness(int brightness);
-void setGreenLEDBrightness(int brightness);
-void setBlueLEDBrightness(int brightness);
+void initializeLEDs();
+void resetLEDs();
+
+// Getter and setter functions for the intervals and brightness
 int getBlinkInterval();
 int getFastBlinkInterval();
 int getSlowBlinkInterval();
 int getCycleInterval();
+
+void setBlinkInterval(int interval);
+void setFastBlinkInterval(int interval);
+void setSlowBlinkInterval(int interval);
+void setCycleInterval(int interval);
+
 int getRedLEDBrightness();
 int getGreenLEDBrightness();
 int getBlueLEDBrightness();
+
+void setRedLEDBrightness(int brightness);
+void setGreenLEDBrightness(int brightness);
+void setBlueLEDBrightness(int brightness);
 
 #endif // LED_CONTROL_H

@@ -1,131 +1,130 @@
-#include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "esp_log.h"
 #include "led_control.h"
 
-void app_main(void) {
+#define TAG "LED_TEST"
+
+void app_main() {
     // Initialize the LEDs
     initializeLEDs();
     
     // Create the LED control task
-    xTaskCreate(controlLEDs, "LED Control Task", 2048, NULL, 1, NULL);
+    xTaskCreate(controlLEDs, "LED Control Task", 1024, NULL, 1, NULL);
     
-    // Set custom intervals
-    setRedLEDBrightness(128); // Example: set red LED brightness to 128
-    setGreenLEDBrightness(64); // Example: set green LED brightness to 64
-    setBlueLEDBrightness(255); // Example: set blue LED brightness to 255
-    
-    // Main loop equivalent
+    // Set custom intervals and brightness levels
+    setRedLEDBrightness(128);  // Example: set red LED brightness to 128
+    setGreenLEDBrightness(64);  // Example: set green LED brightness to 64
+    setBlueLEDBrightness(255);  // Example: set blue LED brightness to 255
+
     while (true) {
         // Example sequences to test LED behaviors and colors
-        printf("-------------------------------------------\n");
-
-        // Turn the LED off
-        printf("Test: LED Off\n");
+        ESP_LOGI(TAG, "Test: LED Off");
         ledBehavior = LED_BEHAVIOR_OFF;
         vTaskDelay(2000 / portTICK_PERIOD_MS);
-        printf("\n");
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        ESP_LOGI(TAG, "");
+
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
 
         // Turn the LED on with different colors
-        printf("Test: LED On Red\n");
+        ESP_LOGI(TAG, "Test: LED On Red");
         ledColor = LED_COLOR_RED;
         ledBehavior = LED_BEHAVIOR_ON;
         vTaskDelay(2000 / portTICK_PERIOD_MS);
-        printf("\n");
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        ESP_LOGI(TAG, "");
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
         
-        printf("Test: LED On Green\n");
+        ESP_LOGI(TAG, "Test: LED On Green");
         ledColor = LED_COLOR_GREEN;
         ledBehavior = LED_BEHAVIOR_ON;
         vTaskDelay(2000 / portTICK_PERIOD_MS);
-        printf("\n");
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        ESP_LOGI(TAG, "");
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
         
-        printf("Test: LED On Blue\n");
+        ESP_LOGI(TAG, "Test: LED On Blue");
         ledColor = LED_COLOR_BLUE;
         ledBehavior = LED_BEHAVIOR_ON;
         vTaskDelay(2000 / portTICK_PERIOD_MS);
-        printf("\n");
+        ESP_LOGI(TAG, "");
         ledBehavior = LED_BEHAVIOR_OFF;
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
 
         // Set the LED to slow blink
-        printf("Test: LED Slow Blink Red\n");
+        ESP_LOGI(TAG, "Test: LED Slow Blink Red");
         ledColor = LED_COLOR_RED;
         ledBehavior = LED_BEHAVIOR_SLOW_BLINK;
         vTaskDelay(3000 / portTICK_PERIOD_MS);
-        printf("\n");
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        ESP_LOGI(TAG, "");
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
         
-        printf("Test: LED Slow Blink Green\n");
+        ESP_LOGI(TAG, "Test: LED Slow Blink Green");
         ledColor = LED_COLOR_GREEN;
         ledBehavior = LED_BEHAVIOR_SLOW_BLINK;
         vTaskDelay(3000 / portTICK_PERIOD_MS);
-        printf("\n");
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        ESP_LOGI(TAG, "");
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
         
-        printf("Test: LED Slow Blink Blue\n");
+        ESP_LOGI(TAG, "Test: LED Slow Blink Blue");
         ledColor = LED_COLOR_BLUE;
         ledBehavior = LED_BEHAVIOR_SLOW_BLINK;
         vTaskDelay(3000 / portTICK_PERIOD_MS);
-        printf("\n");
+        ESP_LOGI(TAG, "");
         ledBehavior = LED_BEHAVIOR_OFF;
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
 
         // Set the LED to blink
-        printf("Test: LED Blink Red\n");
+        ESP_LOGI(TAG, "Test: LED Blink Red");
         ledColor = LED_COLOR_RED;
         ledBehavior = LED_BEHAVIOR_BLINK;
         vTaskDelay(2000 / portTICK_PERIOD_MS);
-        printf("\n");
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        ESP_LOGI(TAG, "");
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
         
-        printf("Test: LED Blink Green\n");
+        ESP_LOGI(TAG, "Test: LED Blink Green");
         ledColor = LED_COLOR_GREEN;
         ledBehavior = LED_BEHAVIOR_BLINK;
         vTaskDelay(2000 / portTICK_PERIOD_MS);
-        printf("\n");
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        ESP_LOGI(TAG, "");
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
         
-        printf("Test: LED Blink Blue\n");
+        ESP_LOGI(TAG, "Test: LED Blink Blue");
         ledColor = LED_COLOR_BLUE;
         ledBehavior = LED_BEHAVIOR_BLINK;
         vTaskDelay(2000 / portTICK_PERIOD_MS);
-        printf("\n");
+        ESP_LOGI(TAG, "");
         ledBehavior = LED_BEHAVIOR_OFF;
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
 
         // Set the LED to fast blink
-        printf("Test: LED Fast Blink Red\n");
+        ESP_LOGI(TAG, "Test: LED Fast Blink Red");
         ledColor = LED_COLOR_RED;
         ledBehavior = LED_BEHAVIOR_FAST_BLINK;
         vTaskDelay(2000 / portTICK_PERIOD_MS);
-        printf("\n");
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        ESP_LOGI(TAG, "");
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
         
-        printf("Test: LED Fast Blink Green\n");
+        ESP_LOGI(TAG, "Test: LED Fast Blink Green");
         ledColor = LED_COLOR_GREEN;
         ledBehavior = LED_BEHAVIOR_FAST_BLINK;
         vTaskDelay(2000 / portTICK_PERIOD_MS);
-        printf("\n");
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        ESP_LOGI(TAG, "");
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
         
-        printf("Test: LED Fast Blink Blue\n");
+        ESP_LOGI(TAG, "Test: LED Fast Blink Blue");
         ledColor = LED_COLOR_BLUE;
         ledBehavior = LED_BEHAVIOR_FAST_BLINK;
         vTaskDelay(2000 / portTICK_PERIOD_MS);
-        printf("\n");
+        ESP_LOGI(TAG, "");
         ledBehavior = LED_BEHAVIOR_OFF;
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
 
         // Set the LED to cycle through colors
-        printf("Test: LED Cycle\n");
+        ESP_LOGI(TAG, "Test: LED Cycle");
         ledBehavior = LED_BEHAVIOR_CYCLE;
         vTaskDelay(6000 / portTICK_PERIOD_MS);
-        printf("\n");
+        ESP_LOGI(TAG, "");
         ledBehavior = LED_BEHAVIOR_OFF;
-        vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 second delay
 
         // Repeat the sequence
     }
