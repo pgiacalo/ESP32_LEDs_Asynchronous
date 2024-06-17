@@ -33,8 +33,19 @@ extern volatile LedColor ledColor;
 // Function declarations
 void initializeLEDs();
 void controlLEDs(void *pvParameters);
+void setBlinkInterval(int interval);
+void setFastBlinkInterval(int interval);
+void setSlowBlinkInterval(int interval);
+void setCycleInterval(int interval);
 void setRedLEDBrightness(int brightness);
 void setGreenLEDBrightness(int brightness);
 void setBlueLEDBrightness(int brightness);
+int getBlinkInterval();
+int getFastBlinkInterval();
+int getSlowBlinkInterval();
+int getCycleInterval();
+int getRedLEDBrightness();
+int getGreenLEDBrightness();
+int getBlueLEDBrightness();
 
 #endif // LED_CONTROL_H

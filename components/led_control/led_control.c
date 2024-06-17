@@ -38,6 +38,50 @@ void setBlueLEDBrightness(int brightness) {
     blueLEDBrightness = brightness;
 }
 
+int getRedLEDBrightness() {
+    return redLEDBrightness;
+}
+
+int getGreenLEDBrightness() {
+    return greenLEDBrightness;
+}
+
+int getBlueLEDBrightness() {
+    return blueLEDBrightness;
+}
+
+void setBlinkInterval(int interval) {
+    blinkInterval = interval;
+}
+
+void setFastBlinkInterval(int interval) {
+    fastBlinkInterval = interval;
+}
+
+void setSlowBlinkInterval(int interval) {
+    slowBlinkInterval = interval;
+}
+
+void setCycleInterval(int interval) {
+    cycleInterval = interval;
+}
+
+int getBlinkInterval() {
+    return blinkInterval;
+}
+
+int getFastBlinkInterval() {
+    return fastBlinkInterval;
+}
+
+int getSlowBlinkInterval() {
+    return slowBlinkInterval;
+}
+
+int getCycleInterval() {
+    return cycleInterval;
+}
+
 void controlLEDs(void *pvParameters) {
     while (true) {
         switch (ledBehavior) {
