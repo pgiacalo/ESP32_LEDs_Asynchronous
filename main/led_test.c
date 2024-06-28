@@ -25,10 +25,16 @@ void setupLEDs() {
     setGreenLEDPin(GPIO_NUM_12);
     setBlueLEDPin(GPIO_NUM_14);
 
-    // Set custom intervals and brightness levels
-    setRedLEDBrightness(128);  // Example: set red LED brightness to 128
-    setGreenLEDBrightness(64);  // Example: set green LED brightness to 64
-    setBlueLEDBrightness(255);  // Example: set blue LED brightness to 255
+    // Set custom brightness levels
+    setRedLEDBrightness(128);
+    setGreenLEDBrightness(64);
+    setBlueLEDBrightness(255);
+
+    // Set custom blink intervals
+    setBlinkInterval(250);
+    setFastBlinkInterval(100);
+    setSlowBlinkInterval(1000);
+    setCycleInterval(1000);
 
     // Initialize the LEDs
     initializeLEDs();
