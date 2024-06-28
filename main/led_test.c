@@ -6,20 +6,30 @@
 #define TAG "LED_TEST"
 
 void app_main() {
+    
+    setupLEDs();
+
+    // Create the LED control task
+    xTaskCreate(controlLEDs, "LED Control Task", 1024, NULL, 1, NULL);    
+
+    xTaskCreate(otherTask, "Other Task", 1024, NULL, 1, NULL);
+
+}
+
+void setupLEDs(){
     // Initialize the LEDs
     initializeLEDs();
-    
-    // Create the LED control task
-    xTaskCreate(controlLEDs, "LED Control Task", 1024, NULL, 1, NULL);
-    
     // Set custom intervals and brightness levels
     setRedLEDBrightness(128);  // Example: set red LED brightness to 128
     setGreenLEDBrightness(64);  // Example: set green LED brightness to 64
     setBlueLEDBrightness(255);  // Example: set blue LED brightness to 255
+}
+
+void otherTask(void *pvParameters){
 
     while (true) {
         // Example sequences to test LED behaviors and colors
-        ESP_LOGI(TAG, "Test: LED Off");
+        ESP_LOGI(TAG, "Test: LEDs Off");
         ledBehavior = LED_BEHAVIOR_OFF;
         vTaskDelay(2000 / portTICK_PERIOD_MS);
         ESP_LOGI(TAG, "");
