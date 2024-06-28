@@ -10,22 +10,28 @@ void setupLEDs();
 void ledTestTask(void *pvParameters);
 
 void app_main() {
+    setupLEDs();
+
     // Create the LED control task
     xTaskCreate(controlLEDs, "LED Control Task", 1024, NULL, 1, NULL);
-
-    setupLEDs();
 
     // Create the LED test task
     xTaskCreate(ledTestTask, "LED Test Task", 2048, NULL, 1, NULL); 
 }
 
 void setupLEDs() {
-    // Initialize the LEDs
-    initializeLEDs();
+    // Set LED pin numbers
+    setRedLEDPin(GPIO_NUM_13);
+    setGreenLEDPin(GPIO_NUM_12);
+    setBlueLEDPin(GPIO_NUM_14);
+
     // Set custom intervals and brightness levels
     setRedLEDBrightness(128);  // Example: set red LED brightness to 128
     setGreenLEDBrightness(64);  // Example: set green LED brightness to 64
     setBlueLEDBrightness(255);  // Example: set blue LED brightness to 255
+
+    // Initialize the LEDs
+    initializeLEDs();
 }
 
 void ledTestTask(void *pvParameters) {

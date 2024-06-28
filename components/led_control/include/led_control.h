@@ -5,11 +5,6 @@
 #include "freertos/task.h"
 #include "driver/gpio.h"
 
-// Define GPIO pins for the RGB LED
-#define RED_LED_PIN GPIO_NUM_13
-#define GREEN_LED_PIN GPIO_NUM_12
-#define BLUE_LED_PIN GPIO_NUM_14
-
 // Enumerations for LED behavior and color
 typedef enum {
     LED_BEHAVIOR_OFF,
@@ -53,5 +48,14 @@ int getBlueLEDBrightness();
 void setRedLEDBrightness(int brightness);
 void setGreenLEDBrightness(int brightness);
 void setBlueLEDBrightness(int brightness);
+
+// Getter and setter functions for the LED pins
+gpio_num_t getRedLEDPin();
+gpio_num_t getGreenLEDPin();
+gpio_num_t getBlueLEDPin();
+
+void setRedLEDPin(gpio_num_t pin);
+void setGreenLEDPin(gpio_num_t pin);
+void setBlueLEDPin(gpio_num_t pin);
 
 #endif // LED_CONTROL_H
