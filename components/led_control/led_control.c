@@ -37,62 +37,6 @@ void resetLEDs() {
     gpio_set_level(blueLEDPin, 0);
 }
 
-void setRedLEDBrightness(int brightness) {
-    redLEDBrightness = brightness;
-}
-
-void setGreenLEDBrightness(int brightness) {
-    greenLEDBrightness = brightness;
-}
-
-void setBlueLEDBrightness(int brightness) {
-    blueLEDBrightness = brightness;
-}
-
-int getRedLEDBrightness() {
-    return redLEDBrightness;
-}
-
-int getGreenLEDBrightness() {
-    return greenLEDBrightness;
-}
-
-int getBlueLEDBrightness() {
-    return blueLEDBrightness;
-}
-
-void setBlinkInterval(int interval) {
-    blinkInterval = interval;
-}
-
-void setFastBlinkInterval(int interval) {
-    fastBlinkInterval = interval;
-}
-
-void setSlowBlinkInterval(int interval) {
-    slowBlinkInterval = interval;
-}
-
-void setCycleInterval(int interval) {
-    cycleInterval = interval;
-}
-
-int getBlinkInterval() {
-    return blinkInterval;
-}
-
-int getFastBlinkInterval() {
-    return fastBlinkInterval;
-}
-
-int getSlowBlinkInterval() {
-    return slowBlinkInterval;
-}
-
-int getCycleInterval() {
-    return cycleInterval;
-}
-
 void controlLEDs(void *pvParameters) {
     while (true) {
         switch (ledBehavior) {
@@ -184,6 +128,7 @@ void controlLEDs(void *pvParameters) {
     }
 }
 
+
 gpio_num_t getRedLEDPin() {
     return redLEDPin;
 }
@@ -207,3 +152,60 @@ void setGreenLEDPin(gpio_num_t pin) {
 void setBlueLEDPin(gpio_num_t pin) {
     blueLEDPin = pin;
 }
+
+void setRedLEDBrightness(int brightness) {
+    redLEDBrightness = brightness;
+}
+
+void setGreenLEDBrightness(int brightness) {
+    greenLEDBrightness = brightness;
+}
+
+void setBlueLEDBrightness(int brightness) {
+    blueLEDBrightness = brightness;
+}
+
+int getRedLEDBrightness() {
+    return redLEDBrightness;
+}
+
+int getGreenLEDBrightness() {
+    return greenLEDBrightness;
+}
+
+int getBlueLEDBrightness() {
+    return blueLEDBrightness;
+}
+
+void setBlinkInterval(int interval) {
+    blinkInterval = interval;
+}
+
+void setFastBlinkInterval(int interval) {
+    fastBlinkInterval = interval;
+}
+
+void setSlowBlinkInterval(int interval) {
+    slowBlinkInterval = interval;
+}
+
+void setCycleInterval(int interval) {
+    cycleInterval = interval;
+}
+
+int getBlinkInterval() {
+    return blinkInterval;
+}
+
+int getFastBlinkInterval() {
+    return fastBlinkInterval;
+}
+
+int getSlowBlinkInterval() {
+    return slowBlinkInterval;
+}
+
+int getCycleInterval() {
+    return cycleInterval;
+}
+

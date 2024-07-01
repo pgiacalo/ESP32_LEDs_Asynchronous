@@ -20,23 +20,23 @@ void app_main() {
 }
 
 void setupLEDs() {
-    // Set LED pin numbers
+    // Set LED pin numbers (optional: to override the default values)
     setRedLEDPin(GPIO_NUM_13);
     setGreenLEDPin(GPIO_NUM_12);
     setBlueLEDPin(GPIO_NUM_14);
 
-    // Set custom brightness levels
+    // Set custom brightness levels (optional: to override the default values)
     setRedLEDBrightness(128);
     setGreenLEDBrightness(64);
     setBlueLEDBrightness(255);
 
-    // Set custom blink intervals
+    // Set custom blink intervals (optional: to override the default values)
     setBlinkInterval(250);
     setFastBlinkInterval(100);
     setSlowBlinkInterval(1000);
     setCycleInterval(1000);
 
-    // Initialize the LEDs
+    // Initialize the LEDs (this function call is required)
     initializeLEDs();
 }
 
